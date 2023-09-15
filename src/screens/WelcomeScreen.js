@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import supabase from "../services/supabase";
 
-const WelcomeScreen = ({ navigation }) => {
+const WelcomeScreen = ({ navigation, route }) => {
+	const { userEmail } = route.params; // Access the user's email from params
+
 	return (
 		<View style={{ flex: 1, alignItems: "center" }}>
 			<Image
@@ -26,7 +29,9 @@ const WelcomeScreen = ({ navigation }) => {
 			</Text>
 
 			<TouchableOpacity
-				onPress={() => navigation.navigate("RecipeList")}
+				onPress={() =>
+					navigation.navigate("RecipeList", { userEmail: userEmail })
+				}
 				style={{
 					backgroundColor: "#f96163",
 					borderRadius: 18,
