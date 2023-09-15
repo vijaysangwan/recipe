@@ -11,20 +11,15 @@ import { colors, recipeList } from "../Constant";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const RecipeCard = ({ recipeData, navigateToUserScreen }) => {
+const RecipeCard = () => {
 	const navigation = useNavigation();
 	return (
 		<View>
 			<FlatList
-				data={recipeData}
+				data={recipeList}
 				renderItem={({ item }) => (
 					<Pressable
-						onPress={() =>
-							navigation.navigate(
-								navigateToUserScreen ? "UserRecipeDetail" : "RecipeDetail",
-								{ item: item }
-							)
-						}
+						onPress={() => navigation.navigate("RecipeDetail", { item: item })}
 						style={{
 							backgroundColor: colors.COLOR_LIGHT,
 							shadowColor: "#000",
@@ -44,7 +39,7 @@ const RecipeCard = ({ recipeData, navigateToUserScreen }) => {
 						/>
 						<Text>{item.name}</Text>
 						<View style={{ flexDirection: "row", marginTop: 8 }}>
-							<Text>{`${parseInt(item.cookingTime).toFixed()} mins`}</Text>
+							<Text>{item.time}</Text>
 							<Text> | </Text>
 							<View style={{ flexDirection: "row" }}>
 								<Text style={{ marginRight: 4 }}>{item.rating}</Text>
