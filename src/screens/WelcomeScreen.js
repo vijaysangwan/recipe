@@ -22,7 +22,7 @@ const WelcomeScreen = ({ navigation }) => {
 					marginBottom: 40,
 				}}
 			>
-				Cook Like A Chef
+				Cook Like A Master Chef
 			</Text>
 
 			<TouchableOpacity
